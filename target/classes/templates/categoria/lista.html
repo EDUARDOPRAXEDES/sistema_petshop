@@ -13,14 +13,11 @@
         <thead>
             <tr>
                 <th>Nome</th>
-                <th>Categoria</th>
-                    
             </tr>
             </thead>
             <tbody>
                 <tr th:each="categoria : ${categoria}">
                     <td th:text="${categoria.nome}"></td>
-                    <td th:text="${categoria.categoria}"></td>
                    
                     <td class="text-center">
                         <div class="d-inline-flex">

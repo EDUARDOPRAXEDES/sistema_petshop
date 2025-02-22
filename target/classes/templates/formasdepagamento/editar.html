@@ -9,19 +9,12 @@
     <div th:replace="fragmentos/menu-lateral :: sidebar"></div>
     <div class="container content mt-5">
     <h2>Cadastro de Produtos</h2>
-    <form th:action="@{'/produtos/editar/' + ${produtos.id}}"  method="post">
+    <form th:action="@{'/formasdepagamento/editar/' + ${formasdepagamento.id}}"  method="post">
         <div class="mb-3">
-            <label for="name" class="form-label">Nome</label>
-            <input type="text" th:value="${produtos.nome}" class="form-control" id="name" name="nome" required>
+            <label for="name" class="form-label">Descrição do Pagamento</label>
+            <input type="text" th:value="${pagamento.descricaodepagamento}" class="form-control" id="name" name="nome" required>
         </div>
-        <div class="mb-3">
-            <label for="categoria" class="form-label">Categoria</label>
-            <input type="categoria" th:value="${produtos.categoria}" class="form-control" id="categoria" name="categoria" required>
-        </div>
-        <div class="mb-3">
-            <label for="preco" class="form-label">Preço</label>
-            <input type="text" th:value="${produtos.preco}" class="form-control" id="preco" name="preco" required>
-        </div>
+       
         <button type="submit" class="btn btn-primary">Cadastrar</button> <a th:href="@{'/#'}" class="btn btn-primary">Início</a>
     </form>
 </div>

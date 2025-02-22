@@ -11,12 +11,8 @@
     <h2>Categoria</h2>
     <form th:action="@{'/categoria/editar/' + ${categoria.id}}"  method="post">
         <div class="mb-3">
-            <label for="name" class="form-label">Nome</label>
+            <label for="name" class="form-label">Nome da Categoria</label>
             <input type="text" th:value="${categoria.nome}" class="form-control" id="name" name="nome" required>
-        </div>
-        <div class="mb-3">
-            <label for="categoria" class="form-label">Categoria</label>
-            <input type="categoria" th:value="${produtos.categoria}" class="form-control" id="categoria" name="categoria" required>
         </div>
     
         <button type="submit" class="btn btn-primary">Cadastrar Categoria</button> <a th:href="@{'/#'}" class="btn btn-primary">Início</a>
