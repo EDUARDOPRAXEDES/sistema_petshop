@@ -1,9 +1,14 @@
 package com.petshop.model;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -14,20 +19,25 @@ public class Produto {
     private Long id;
     private String nome;
     private double preco;
-    private String categoria;
-    private String fotoPath; 
+    private String fotoPath;
 
-    public Produto(Long id, String nome, double preco, String categoria, String fotoPath) {
-        this.categoria = categoria;
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria; // Correção: Agora está correto
+
+    @ManyToMany(mappedBy = "produtos")
+    private List<Pedidos> pedidos;
+
+    public Produto(Long id, String nome, double preco, Categoria categoria, String fotoPath) { // Correção aqui
         this.id = id;
         this.nome = nome;
         this.preco = preco;
+        this.categoria = categoria;
+        this.fotoPath = fotoPath;
     }
 
     public Produto() {
     }
-
-   
 
     public Long getId() {
         return id;
@@ -53,11 +63,11 @@ public class Produto {
         this.preco = preco;
     }
 
-    public String getCategoria() {
+    public Categoria getCategoria() { // Getter corrigido
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
+    public void setCategoria(Categoria categoria) { // Setter corrigido
         this.categoria = categoria;
     }
 
@@ -65,14 +75,7 @@ public class Produto {
         return fotoPath;
     }
 
-
     public void setFotoPath(String fotoPath) {
         this.fotoPath = fotoPath;
     }
-
-
-    
-    
-
-
 }

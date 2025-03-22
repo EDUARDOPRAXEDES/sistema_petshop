@@ -28,9 +28,9 @@ public class VendedoresController {
     private VendedoresService vendedoresService;
 
     @GetMapping("/vendedores")
-    public String listarProdutos(Model model) {
+    public String listarVendedores(Model model) {
         model.addAttribute("vendedores", vendedoresService.buscarTodosOsVendedores());
-        return "produtos/lista";
+        return "vendedores/lista";
     }
 
     @GetMapping("/vendedores/cadastro")

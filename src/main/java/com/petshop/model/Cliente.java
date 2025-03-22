@@ -1,9 +1,13 @@
 package com.petshop.model;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -18,6 +22,9 @@ public class Cliente {
     private String telefone;
     private String endereco;
     private Long cpf;
+
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Pedidos> pedidos;
 
     public Cliente(String nome, String email, String telefone, String endereco, long cpf) {
         this.nome = nome;

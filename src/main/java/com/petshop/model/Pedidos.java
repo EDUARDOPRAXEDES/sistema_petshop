@@ -1,11 +1,16 @@
 package com.petshop.model;
 
 import java.util.Calendar;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -17,6 +22,20 @@ public class Pedidos {
     private Long id;
     private Long numero_pedido;
     private Calendar data_hora;
+
+    @ManyToOne
+    @JoinColumn(name = "cliente_id", nullable = false)
+    private Cliente cliente;
+
+    @ManyToMany
+    @JoinTable(
+        name = "pedido_produto",
+        joinColumns = @JoinColumn(name = "pedido_id"),
+        inverseJoinColumns = @JoinColumn(name = "produto_id")
+    )
+    private List<Produto> produtos;
+
+   
 
 
     public Pedidos(Long numero_pedido, Calendar data_hora) {

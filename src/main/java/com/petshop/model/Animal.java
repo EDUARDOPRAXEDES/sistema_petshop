@@ -4,26 +4,38 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+
 
 @Entity
 @Table(name="animais")
 public class Animal {
-    public Animal() {
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    private String raca;
     private int idade;
-
     private String fotoPath;
 
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
+    private Cliente dono;
 
+    @ManyToOne
+    @JoinColumn(name = "especie_id")
+    private Especie especie;
 
-     public Animal(String nome, String raca, int idade, String fotoPath) {
+    @ManyToOne
+    @JoinColumn(name = "raca_id")
+    private Raca raca;
+
+    public Animal() {
+    }
+
+    public Animal(String nome, Raca raca, int idade, String fotoPath) { // Correção: Agora aceita um objeto Raca
         this.nome = nome;
         this.raca = raca;
         this.idade = idade;
@@ -46,14 +58,6 @@ public class Animal {
         this.nome = nome;
     }
 
-    public String getRaca() {
-        return raca;
-    }
-
-    public void setRaca(String raca) {
-        this.raca = raca;
-    }
-
     public int getIdade() {
         return idade;
     }
@@ -69,5 +73,28 @@ public class Animal {
     public void setFotoPath(String fotoPath) {
         this.fotoPath = fotoPath;
     }
- 
+
+    public Cliente getDono() {
+        return dono;
+    }
+
+    public void setDono(Cliente dono) {
+        this.dono = dono;
+    }
+
+    public Especie getEspecie() {
+        return especie;
+    }
+
+    public void setEspecie(Especie especie) {
+        this.especie = especie;
+    }
+
+    public Raca getRaca() { // Adicionando getter para Raca
+        return raca;
+    }
+
+    public void setRaca(Raca raca) { // Adicionando setter para Raca
+        this.raca = raca;
+    }
 }

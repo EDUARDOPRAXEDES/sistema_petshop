@@ -21,17 +21,23 @@
         <h1>Bem-vindo ao Sistema PetShop</h1>
         <p>Aqui você pode cadastrar animais, clientes, produtos. Realizar vendas e consultar relatórios.</p>
         <p>Utilize o menu lateral para navegar pelo sistema.</p>
+        <div th:replace="fragmentos/cabecalho :: cabecalho"></div>
+
+        
+
 
         <div class= "row row-cols-1 row-cols-md-3 g-4 mt-4">
 
             <div div class= "col" th:each="produto : ${produtos}">
                 <div class="card h-100">
-            
+
+                                
                     <div class="card-body">
                         <img th:src = "@{${produto.fotoPath}}" class="card-img-top" alt="Imagem do Produto">
                     </div>
 
                     <div class="card-footer text-center">
+                        
                         <h5 class="card-title" th:text="${produto.nome}">Nome do Produto</h5>
                         <p class="card-text">Preço: R$ 
                             <span th:text="${#numbers.formatDecimal(produto.preco, 2, 2)}">0.00</span>
@@ -40,6 +46,7 @@
                 </div>
             </div>
         </div> 
+        <div th:replace="fragmentos/rodape :: rodape"></div>
     </div>    
 
 </body>

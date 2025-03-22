@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -18,6 +20,10 @@ public class Estoque {
     private Calendar data_entrada;
     private Long nota_de_entrada;
     private Double valor_de_entrada;
+
+    @OneToOne
+    @JoinColumn(name = "produto_id")
+    private Produto produto;
 
 
     public Estoque(Long quantidade, Calendar data_entrada, Long nota_de_entrada, Double valor_de_entrada) {
