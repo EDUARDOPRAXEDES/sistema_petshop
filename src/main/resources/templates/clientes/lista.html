@@ -6,8 +6,11 @@
     <link href="css/petshop.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" rel="stylesheet">
 </head>
-<body>
+<body>      
     <div th:replace="fragmentos/menu-lateral :: sidebar"></div>
+    <div class="content">
+        <div th:replace="fragmentos/cabecalho :: cabecalho"></div>
+        </div>
 <div class="container content mt-5">
     <h2>Lista de Clientes</h2>
     <table class="table table-striped table-bordered">
@@ -41,5 +44,8 @@
     <a th:href="@{'/#'}" class="btn btn-primary">Início</a>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<div class="content">
+    <div th:replace="fragmentos/rodape :: rodape"></div>
+</div> 
 </body>
 </html>

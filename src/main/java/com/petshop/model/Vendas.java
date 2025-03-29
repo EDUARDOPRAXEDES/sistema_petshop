@@ -13,7 +13,7 @@ public class Vendas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private Double quantidade;
+    private Long quantidade;
     private Long cliente_id;
     private Long animais_id;
     private Long vendedores_id;
@@ -22,12 +22,12 @@ public class Vendas {
 
 
 
-    public Double getQuantidade() {
+    public Long getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(Double quantidade) {
-        this.quantidade = quantidade;
+    public void setQuantidade(Long id) {
+        this.quantidade = id;
     }
 
     public Long getProduto_id() {
@@ -68,6 +68,14 @@ public class Vendas {
 
     public void setCliente_id(Long cliente_id) {
         this.cliente_id = cliente_id;
+    }
+
+    public Object getId() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void setId(Long id) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
     
 }
