@@ -26,9 +26,9 @@ public class CategoriaController {
         return "categoria/lista";
     }
 
-    @GetMapping("/categoria/realizar")
+    @GetMapping("/categoria/cadastro")
     public String exibirFormularioRealizarCategoria() {
-        return "categoria/realizar";
+        return "categoria/cadastro";
     }
 
     @PostMapping("/categoria")
@@ -47,10 +47,8 @@ public class CategoriaController {
     @PostMapping("/categoria/editar/{id}")
     public String atualizarCategoria(@PathVariable Long id, @ModelAttribute Categoria categoriaAtualizado) {
         Categoria categoria = categoriaService.buscarPorId(id).orElseThrow(() -> new IllegalArgumentException("ID inválido: " + id));
-        categoria.setId(id);
-        categoriaAtualizado.getId();
-        categoria.setNome(null);
-        categoriaAtualizado.getNome();
+        categoria.setNome(categoriaAtualizado.getNome());
+        categoriaService.salvarCategoria(categoria);
         
         return "redirect:/categoria";
     }

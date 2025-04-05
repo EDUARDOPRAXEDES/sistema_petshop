@@ -25,9 +25,9 @@ public class RacaController {
         return "raca/lista";
     }
 
-    @GetMapping("/raca/realizar")
+    @GetMapping("/raca/cadastro")
     public String exibirFormularioRealizarRaca() {
-        return "raca/realizar";
+        return "raca/cadastro";
     }
 
     @PostMapping("/raca")

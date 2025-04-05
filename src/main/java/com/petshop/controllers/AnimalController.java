@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.petshop.model.Animal;
+import com.petshop.model.Raca;
 import com.petshop.services.AnimalService;
+import com.petshop.services.RacaService;
 
 
 @Controller
@@ -25,6 +28,9 @@ public class AnimalController {
 
     @Autowired
     private AnimalService animalService;
+
+    @Autowired
+    private RacaService racaService;
 
     @Value("${imagens.animais.path}")
     private String imagesPath;
@@ -44,6 +50,10 @@ public class AnimalController {
     public String editarAnimal(@PathVariable Long id, Model model) {
         Animal animal = animalService.buscarPorId(id).orElseThrow(() -> new IllegalArgumentException("ID inválido: " + id));
         model.addAttribute("animal", animal);
+        List<Raca> racas= racaService.buscarTodasAsRaca();
+        model.addAttribute("racas", racas);
+
+
         return "animais/editar";
     }
 

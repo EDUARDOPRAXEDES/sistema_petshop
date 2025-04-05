@@ -29,6 +29,15 @@ public class Categoria {
     
 
 }
+
+    public Categoria() {
+    }
+
+    public Categoria(Long id, String nome, List<Produto> produtos) {
+        this.id = id;
+        this.nome = nome;
+        this.produtos = produtos;
+    }
     public String getNome() {
         return nome;
     }
@@ -51,6 +60,8 @@ public class Categoria {
     public void setProdutos(List<Produto> produtos) {
         this.produtos = produtos;
     }
+
+
 
 }    
 

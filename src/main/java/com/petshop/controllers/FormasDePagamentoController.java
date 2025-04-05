@@ -21,31 +21,31 @@ public class FormasDePagamentoController {
     @Autowired
     private FormasDePagamentoService formasDePagamentoService;
 
-    @GetMapping("/formasDePagamento")
+    @GetMapping("/formasdepagamento")
     public String listarFormasDePagamento(Model model) {
-        model.addAttribute("formasDePagamento", formasDePagamentoService.buscarTodasAsFormasDePagamento());
-        return "formasDePagamento/lista";
+        model.addAttribute("formasdepagamento", formasDePagamentoService.buscarTodasAsFormasDePagamento());
+        return "formasdepagamento/lista";
     }
 
-    @GetMapping("/formasDePagamento/realizar")
+    @GetMapping("/formasdepagamento/realizar")
     public String exibirFormularioRealizarFormasDePagamento() {
-        return "formasDePagamento/realizar";
+        return "formasdepagamento/realizar";
     }
 
-    @PostMapping("/formasDePagamento")
+    @PostMapping("/formasdepagamento")
     public String salvarFormasDePagamento(FormasDePagamento formasDePagamento) {
         formasDePagamentoService.salvarFormaDePagamento(formasDePagamento);
-        return "redirect:/formasDePagamento";
+        return "redirect:/formasdepagamento";
     }
 
-    @GetMapping("/formasDePagamento/editar/{id}")
+    @GetMapping("/formasdepagamento/editar/{id}")
     public String editarFormasDePagamento(@PathVariable Long id, Model model) {
         FormasDePagamento formasDePagamento = formasDePagamentoService.buscarPorId(id).orElseThrow(() -> new IllegalArgumentException("ID inválido: " + id));
-        model.addAttribute("formasDePagamento", formasDePagamento);
-        return "formasDePagamento/editar";
+        model.addAttribute("formasdepagamento", formasDePagamento);
+        return "formasdepagamento/editar";
     }
 
-    @PostMapping("/formasDePagamento/editar/{id}")
+    @PostMapping("/formasdepagamento/editar/{id}")
     public String atualizarFormasDePagamento(@PathVariable Long id, @ModelAttribute FormasDePagamento formasDePagamentoAtualizado) {
         FormasDePagamento formasDePagamento = formasDePagamentoService.buscarPorId(id).orElseThrow(() -> new IllegalArgumentException("ID inválido: " + id));
         formasDePagamento.setId(id);
@@ -53,13 +53,13 @@ public class FormasDePagamentoController {
         formasDePagamento.setDescricao(null);
         formasDePagamentoAtualizado.getDescricao();
 
-        return "redirect:/formasDePagamento";
+        return "redirect:/formasdepagamento";
     }
 
-    @GetMapping("/formasDePagamento/deletar/{id}")
+    @GetMapping("/formasdepagamento/deletar/{id}")
     public String deletarFormasDePagamento(@PathVariable Long id) {
         formasDePagamentoService.excluirFormaDePagamentoPorId(id);
-        return "redirect:/formasDePagamento";
+        return "redirect:/formasdepagamento";
     }
 
 }
