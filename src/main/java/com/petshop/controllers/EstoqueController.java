@@ -26,9 +26,9 @@ public class EstoqueController {
         return "estoque/lista";
     }
 
-    @GetMapping("/estoque/realizar")
+    @GetMapping("/estoque/cadastro")
     public String exibirFormularioRealizarEstoque() {
-        return "estoque/realizar";
+        return "estoque/cadastro";
     }
 
     @PostMapping("/estoque")

@@ -27,9 +27,9 @@ public class FormasDePagamentoController {
         return "formasdepagamento/lista";
     }
 
-    @GetMapping("/formasdepagamento/realizar")
+    @GetMapping("/formasdepagamento/cadastro")
     public String exibirFormularioRealizarFormasDePagamento() {
-        return "formasdepagamento/realizar";
+        return "formasdepagamento/cadastro";
     }
 
     @PostMapping("/formasdepagamento")

@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.petshop.model.Animal;
 import com.petshop.model.Raca;
 import com.petshop.services.AnimalService;
+import com.petshop.services.ClienteService;
 import com.petshop.services.RacaService;
 
 
@@ -28,6 +29,9 @@ public class AnimalController {
 
     @Autowired
     private AnimalService animalService;
+
+    @Autowired
+    private ClienteService clienteService;
 
     @Autowired
     private RacaService racaService;
@@ -40,9 +44,12 @@ public class AnimalController {
         model.addAttribute("animais", animalService.buscarTodosOsAnimais());
         return "animais/lista";
     }
-
-    @GetMapping("/animais/cadastro")
-    public String exibirFormularioCadastro() {
+    
+    @GetMapping("animais/cadastro")
+    public String exibirFormularioCadastro(Model model) {
+        //model.addAttribute("animal", new Animal());
+        model.addAttribute("clientes", clienteService.buscarTodosOsClientes());
+        model.addAttribute("racas", racaService.buscarTodasAsRaca());
         return "animais/cadastro";
     }
 
@@ -50,6 +57,7 @@ public class AnimalController {
     public String editarAnimal(@PathVariable Long id, Model model) {
         Animal animal = animalService.buscarPorId(id).orElseThrow(() -> new IllegalArgumentException("ID inválido: " + id));
         model.addAttribute("animal", animal);
+        
         List<Raca> racas= racaService.buscarTodasAsRaca();
         model.addAttribute("racas", racas);
 

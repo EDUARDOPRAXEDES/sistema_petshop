@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -16,6 +18,10 @@ public class Raca {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+
+    @ManyToOne
+    @JoinColumn(name = "especies_id")
+    private Especie especie; 
 
     @OneToMany(mappedBy = "raca")
     private List<Animal> animais;
@@ -34,6 +40,22 @@ public class Raca {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public Especie getEspecie() {
+        return especie;
+    }
+
+    public void setEspecie(Especie especie) {
+        this.especie = especie;
+    }
+
+    public List<Animal> getAnimais() {
+        return animais;
+    }
+
+    public void setAnimais(List<Animal> animais) {
+        this.animais = animais;
     }
 }
 

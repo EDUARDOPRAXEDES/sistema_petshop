@@ -21,18 +21,18 @@
             </tr>
             </thead>
             <tbody>
-                <tr th:each="formadepagamento : ${formadepagamento}">
-                    <td th:text="${formadepagamento.descrição}"></td>
+                <tr th:each="formasdepagamento : ${formasdepagamento}">
+                    <td th:text="${formasdepagamento.descrição}"></td>
                     <td class="text-center">
                         <div class="d-inline-flex">
-                            <a th:href="@{'/formadepagamento/editar/' + ${formadepagamento.id}}" class="btn btn-warning btn-sm me-2">Editar</a>
-                            <a th:href="@{'/formadepagamento/deletar/' + ${formadepagamento.id}}" class="btn btn-danger btn-sm" onclick="return confirm('Deseja realmente excluir este formadepagamento?');">Excluir</a>
+                            <a th:href="@{'/formasdepagamento/editar/' + ${formasdepagamento.id}}" class="btn btn-warning btn-sm me-2">Editar</a>
+                            <a th:href="@{'/formasdepagamento/deletar/' + ${formasdepagamento.id}}" class="btn btn-danger btn-sm" onclick="return confirm('Deseja realmente excluir este formasdepagamento?');">Excluir</a>
                         </div>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <a href="/formadepagamento/cadastro" class="btn btn-primary">Nova Forma de Pagamento</a>
+        <a href="/formasdepagamento/cadastro" class="btn btn-primary">Nova Forma de Pagamento</a>
         <a th:href="@{'/#'}" class="btn btn-primary">Início</a>
     </div>
     <div class="content">

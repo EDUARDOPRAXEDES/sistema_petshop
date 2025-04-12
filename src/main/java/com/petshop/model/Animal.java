@@ -1,6 +1,7 @@
 package com.petshop.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -24,13 +25,10 @@ public class Animal {
     @JoinColumn(name = "cliente_id")
     private Cliente dono;
 
-    @ManyToOne
-    @JoinColumn(name = "especie_id")
-    private Especie especie;
-
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "raca_id")
     private Raca raca;
+
 
     public Animal() {
     }
@@ -80,14 +78,6 @@ public class Animal {
 
     public void setDono(Cliente dono) {
         this.dono = dono;
-    }
-
-    public Especie getEspecie() {
-        return especie;
-    }
-
-    public void setEspecie(Especie especie) {
-        this.especie = especie;
     }
 
     public Raca getRaca() { // Adicionando getter para Raca

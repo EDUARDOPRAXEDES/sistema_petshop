@@ -20,6 +20,16 @@
       <div class="col-md-6 form-container">
         <form action="/animais" method="post" enctype="multipart/form-data">
           <div class="mb-3">
+            <select class="form-select" id="clienteId" name="clienteId" required>
+              <option value="">Selecione um cliente</option>
+              <th:block th:each="cliente : ${clientes}">
+                  <option th:value="${cliente.id}" th:text="${cliente.nome}"></option>
+              </th:block>
+          </select>
+          </div>
+          
+        
+          <div class="mb-3">
             <label for="nome" class="form-label">Nome do Animal</label>
             <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome do animal" required>
           </div>
@@ -28,13 +38,18 @@
             <input type="number" class="form-control" id="idade" name="idade" placeholder="Idade do animal" required>
           </div>
           <div class="mb-3">
-            <label for="raca" class="form-label">Raça</label>
-            <input type="text" class="form-control" id="raca" name="raca" placeholder="Raça do animal" required>
+            <select class="form-select" id="racaId" name="racaId" required>
+              <option value="">Selecione uma Raça</option>
+              <th:block th:each="raca : ${racas}">
+                  <option th:value="${raca.id}" th:text="${raca.nome}"></option>
+              </th:block>
+          </select>
           </div>
           <div class="mb-3">
             <label for="foto" class="form-label">Foto do Animal</label>
             <input type="file" class="form-control" id="foto" name="foto" accept="image/*" onchange="mostrarImagem(event)">
           </div>
+          
           <button type="submit" class="btn btn-primary">Cadastrar</button> <a th:href="@{'/#'}" class="btn btn-primary">Início</a>
         </form>
       </div>

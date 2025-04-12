@@ -37,6 +37,8 @@ public class Cliente {
 
     public Cliente() {
     }
+
+    
     public Long getId() {
         return id;
     }
@@ -83,6 +85,14 @@ public class Cliente {
 
     public void setCpf(Long cpf) {
         this.cpf = cpf;
+    }
+
+    public List<Pedidos> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(List<Pedidos> pedidos) {
+        this.pedidos = pedidos;
     }
 
 

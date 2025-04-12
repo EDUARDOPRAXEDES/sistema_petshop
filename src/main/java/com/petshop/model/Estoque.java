@@ -80,4 +80,12 @@ public class Estoque {
         this.valor_de_entrada = valor_de_entrada;
     }
 
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
+
 }

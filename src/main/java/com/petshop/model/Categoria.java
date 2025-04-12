@@ -26,8 +26,6 @@ public class Categoria {
     public Categoria(Long id, String nome) {
         this.id = id;
         this.nome = nome;
-    
-
 }
 
     public Categoria() {

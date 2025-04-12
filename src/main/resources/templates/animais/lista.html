@@ -30,7 +30,7 @@
         <tbody>
             <tr th:each="animal : ${animais}">
                 <td th:text="${animal.nome}"></td>
-                <td th:text="${animal.raca}"></td>
+                <td th:text="${animal.raca != null ? animal.raca.nome: '---'}"></td>
                 <td th:text="${animal.idade}"></td>
                 <td class="text-center">
                     <div class="d-inline-flex">

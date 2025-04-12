@@ -20,6 +20,10 @@ public class AnimalService {
         return animalRepository.findAll();
     }
 
+    public List<Animal> buscarTodosOsAnimaisComRaca() {
+        return animalRepository.findAllComRaca();
+    }
+
     public void salvarAnimal(Animal animal) {
         animalRepository.save(animal);
     }

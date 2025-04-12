@@ -18,7 +18,7 @@ public class Especie {
     private String nome;
 
     @OneToMany(mappedBy = "especie")
-    private List<Animal> animais;
+    private List<Raca> racas;
 
     public Long getId() {
         return id;
@@ -34,6 +34,14 @@ public class Especie {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public List<Raca> getRacas() {
+        return racas;
+    }
+
+    public void setRacas(List<Raca> racas) {
+        this.racas = racas;
     }
     
 
