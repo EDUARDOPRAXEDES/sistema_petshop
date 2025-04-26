@@ -26,6 +26,9 @@ public class Cliente {
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Pedidos> pedidos;
 
+    @OneToMany(mappedBy = "animal")
+    private List<Animal> animais;
+
     public Cliente(String nome, String email, String telefone, String endereco, long cpf) {
         this.nome = nome;
         this.email = email;

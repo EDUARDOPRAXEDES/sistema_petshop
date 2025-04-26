@@ -1,9 +1,12 @@
 package com.petshop.model;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -18,6 +21,9 @@ public class Vendedores {
     private String cpf; 
     private String telefone;
     private String fotoPath;
+
+    @OneToMany(mappedBy = "vendedores")
+    private List<Vendas> vendas;
 
     public Vendedores(String nome,int idade, String cpf, String telefone, String fotoPath) {
         this.nome = nome;
