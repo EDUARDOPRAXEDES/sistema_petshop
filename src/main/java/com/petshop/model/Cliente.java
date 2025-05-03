@@ -29,8 +29,9 @@ public class Cliente {
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Vendas> vendas = new ArrayList<>();
 
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    private List<Animal> animais = new ArrayList<>();
+
+    @OneToMany(mappedBy = "cliente")
+    private List<Animal> animal;
 
     public Long getId() {
         return id;

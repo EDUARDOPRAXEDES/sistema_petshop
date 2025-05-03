@@ -27,6 +27,10 @@ public class Animal {
     private String fotoPath;
 
     @ManyToOne
+    @JoinColumn(name = "cliente_id")
+    private Cliente cliente;
+
+    @ManyToOne
     @JoinColumn(name = "fk_cliente_id")
     private Cliente dono;
 
