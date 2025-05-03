@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.petshop.model.Vendas;
 import com.petshop.services.VendasService;
 
-
 @Controller
 public class VendasController {
 
@@ -37,21 +36,20 @@ public class VendasController {
 
     @GetMapping("/vendas/editar/{id}")
     public String editarVendas(@PathVariable Long id, Model model) {
-        Vendas vendas = vendasService.buscarPorId(id).orElseThrow(() -> new IllegalArgumentException("ID inválido: " + id));
+        Vendas vendas = vendasService.buscarPorId(id)
+                .orElseThrow(() -> new IllegalArgumentException("ID inválido: " + id));
         model.addAttribute("vendas", vendas);
         return "vendas/editar";
     }
 
-    @PostMapping("/vendas/editar/{id}")  //Passar numero do pedido como id
+    @PostMapping("/vendas/editar/{id}") // Passar numero do pedido como id
     public String atualizarVendas(@PathVariable Long id, @ModelAttribute Vendas vendasAtualizado) {
-        Vendas vendas = vendasService.buscarPorId(id).orElseThrow(() -> new IllegalArgumentException("ID inválido: " + id));
-        vendas.setId(id);
-        vendasAtualizado.getId();
-        vendas.setQuantidade(id);
-        vendasAtualizado.getQuantidade();
-       
-        
-    
+        Vendas vendas = vendasService.buscarPorId(id)
+                .orElseThrow(() -> new IllegalArgumentException("ID inválido: " + id));
+        vendas.setQuantidade(vendasAtualizado.getQuantidade());
+
+        vendasService.salvarVendas(vendas);
+
         return "redirect:/vendas";
     }
 

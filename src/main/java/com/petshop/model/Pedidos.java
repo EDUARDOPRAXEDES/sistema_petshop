@@ -1,22 +1,22 @@
 package com.petshop.model;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="pedidos")
+@Table(name = "pedidos")
 public class Pedidos {
 
     @Id
@@ -25,22 +25,12 @@ public class Pedidos {
     private Long numero_pedido;
     private Calendar data_hora;
 
-    @ManyToOne
-    @JoinColumn(name = "cliente_id", nullable = false)
+    @OneToMany(mappedBy = "pedidos", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Vendas> vendas = new ArrayList<>();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "fk_clientes_id")
     private Cliente cliente;
-
-
-
-    @ManyToMany
-    @JoinTable(
-        name = "pedido_produto",
-        joinColumns = @JoinColumn(name = "pedido_id"),
-        inverseJoinColumns = @JoinColumn(name = "produto_id")
-    )
-    private List<Produto> produtos;
-
-   
-
 
     public Pedidos(Long numero_pedido, Calendar data_hora) {
         this.numero_pedido = numero_pedido;
@@ -73,10 +63,5 @@ public class Pedidos {
     public void setId(Long id) {
         this.id = id;
     }
-
- 
-
-    
-    
 
 }

@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -25,8 +26,8 @@ public class Produto {
     @JoinColumn(name = "categoria_id")
     private Categoria categoria; // Correção: Agora está correto
 
-    @ManyToMany(mappedBy = "produtos")
-    private List<Pedidos> pedidos;
+    @OneToMany(mappedBy = "produto")
+    private List<Vendas> vendas;
 
     public Produto(Long id, String nome, double preco, Categoria categoria, String fotoPath) { // Correção aqui
         this.id = id;

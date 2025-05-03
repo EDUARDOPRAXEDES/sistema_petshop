@@ -1,9 +1,11 @@
 package com.petshop.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -18,30 +20,18 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+
     private String email;
     private String telefone;
     private String endereco;
     private Long cpf;
 
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Pedidos> pedidos;
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Vendas> vendas = new ArrayList<>();
 
-    @OneToMany(mappedBy = "animal")
-    private List<Animal> animais;
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Animal> animais = new ArrayList<>();
 
-    public Cliente(String nome, String email, String telefone, String endereco, long cpf) {
-        this.nome = nome;
-        this.email = email;
-        this.telefone = telefone;
-        this.endereco = endereco;
-        this.cpf = cpf; 
-    
-    }
-
-    public Cliente() {
-    }
-
-    
     public Long getId() {
         return id;
     }
@@ -90,14 +80,30 @@ public class Cliente {
         this.cpf = cpf;
     }
 
-    public List<Pedidos> getPedidos() {
-        return pedidos;
+    public List<Vendas> getVendas() {
+        return vendas;
     }
 
-    public void setPedidos(List<Pedidos> pedidos) {
-        this.pedidos = pedidos;
+    public void setVendas(List<Vendas> vendas) {
+        this.vendas = vendas;
     }
 
+
+
+
+    public Cliente(String nome, String email, String telefone, String endereco, long cpf) {
+        this.nome = nome;
+        this.email = email;
+        this.telefone = telefone;
+        this.endereco = endereco;
+        this.cpf = cpf; 
+    
+    }
+
+    public Cliente() {
+    }
+
+    
 
  
 }
