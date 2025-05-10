@@ -16,24 +16,23 @@
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
-                <th>Valor Pago</th>
-                    
+                <th>Valor Pago</th>                    
             </tr>
             </thead>
             <tbody>
                 <tr th:each="pagamento : ${pagamento}">
                     
-                    <td th:text="${produto.preco}"></td>
+                    <!--<td th:text="${produto.preco}"></td>-->
                     <td class="text-center">
                         <div class="d-inline-flex">
-                            <a th:href="@{'/produtos/editar/' + ${produto.id}}" class="btn btn-warning btn-sm me-2">Editar</a>
-                            <a th:href="@{'/produtos/deletar/' + ${produto.id}}" class="btn btn-danger btn-sm" onclick="return confirm('Deseja realmente excluir este Produto?');">Excluir</a>
+                            <a th:href="@{'/pagamento/editar/' + ${pagamento.id}}" class="btn btn-warning btn-sm me-2">Editar</a>
+                            <a th:href="@{'/pagamento/deletar/' + ${pagamento.id}}" class="btn btn-danger btn-sm" onclick="return confirm('Deseja realmente excluir este Pagamento?');">Excluir</a>
                         </div>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <a href="/produtos/cadastro" class="btn btn-primary">Novo Produto</a>
+        <a href="/pagamento/cadastro" class="btn btn-primary">Novo Pagamento</a>
         <a th:href="@{'/#'}" class="btn btn-primary">Início</a>
     </div>
     <div class="content">

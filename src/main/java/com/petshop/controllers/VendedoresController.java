@@ -64,7 +64,7 @@ public String atualizarVendedores(@PathVariable Long id, @ModelAttribute Vendedo
     vendedores.setTelefone(vendedoresAtualizado.getTelefone());
     vendedores.setFotoPath(vendedoresAtualizado.getFotoPath());
     vendedoresService.salvarVendedores(vendedores);
-    return "redirect:/vendedores";
+    return "/vendedores/editar";
 }
 @GetMapping("/vendedores/deletar/{id}")
 public String deletarVendedores(@PathVariable Long id) {

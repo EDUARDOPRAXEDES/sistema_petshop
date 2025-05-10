@@ -25,9 +25,9 @@ public class EspecieController {
         return "especie/lista";
     }
 
-    @GetMapping("/especie/realizar")
+    @GetMapping("/especie/cadastro")
     public String exibirFormularioRealizarEspecie() {
-        return "especie/realizar";
+        return "especie/cadastro";
     }
 
     @PostMapping("/especie")

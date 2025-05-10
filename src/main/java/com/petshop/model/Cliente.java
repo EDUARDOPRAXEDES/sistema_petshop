@@ -24,7 +24,7 @@ public class Cliente {
     private String email;
     private String telefone;
     private String endereco;
-    private Long cpf;
+    private String cpf;
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Vendas> vendas = new ArrayList<>();
@@ -73,11 +73,11 @@ public class Cliente {
         this.endereco = endereco;
     }
 
-    public Long getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(Long cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
@@ -92,7 +92,7 @@ public class Cliente {
 
 
 
-    public Cliente(String nome, String email, String telefone, String endereco, long cpf) {
+    public Cliente(String nome, String email, String telefone, String endereco, String cpf) {
         this.nome = nome;
         this.email = email;
         this.telefone = telefone;

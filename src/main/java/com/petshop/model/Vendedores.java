@@ -1,7 +1,6 @@
 package com.petshop.model;
 
 import java.util.List;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,26 +18,15 @@ public class Vendedores {
     private String nome; 
     private int idade;
     private String cpf; 
-    private String telefone;
-    private String fotoPath;
-
-    @OneToMany(mappedBy = "vendedores")
-    private List<Vendas> vendas;
-
-    public Vendedores(String nome,int idade, String cpf, String telefone, String fotoPath) {
-        this.nome = nome;
-        this.idade =idade;
-        this.cpf = cpf;
-        this.telefone = telefone; 
-        this.fotoPath = fotoPath;
-
+    public Long getId() {
+        return id;
     }
 
-    public Vendedores() {
+    public void setId(Long id) {
+        this.id = id;
     }
 
-
-    public String getNome(){
+    public String getNome() {
         return nome;
     }
 
@@ -70,6 +58,14 @@ public class Vendedores {
         this.telefone = telefone;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getFotoPath() {
         return fotoPath;
     }
@@ -78,13 +74,34 @@ public class Vendedores {
         this.fotoPath = fotoPath;
     }
 
-    public Long getId() {
-        return id;
+    public List<Vendas> getVendas() {
+        return vendas;
     }
 
-    public void setId(Long id){
-        this.id = id; 
+    public void setVendas(List<Vendas> vendas) {
+        this.vendas = vendas;
+    }
+
+    private String telefone;
+    private String email;
+    private String fotoPath;
+
+    @OneToMany(mappedBy = "vendedores")
+    private List<Vendas> vendas;
+
+    public Vendedores(String nome,int idade, String cpf, String telefone, String fotoPath) {
+        this.nome = nome;
+        this.idade = idade;
+        this.cpf = cpf;
+        this.telefone = telefone; 
+        this.email = email;
+        this.fotoPath = fotoPath;
 
     }
+
+    public Vendedores() {
+    }
+
+
 
 }
