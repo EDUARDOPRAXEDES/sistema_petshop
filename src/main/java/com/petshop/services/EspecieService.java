@@ -1,12 +1,11 @@
 package com.petshop.services;
-import java.util.List;
-import java.util.Optional;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.petshop.model.Especie;
 import com.petshop.repository.EspecieRepository;
+import jakarta.persistence.EntityNotFoundException;
 
 
 
@@ -26,8 +25,10 @@ public class EspecieService {
     }
 
     
-    public Optional<Especie> buscarPorId(Long id) {
-        return especieRepository.findById(id);
+    public Especie buscarPorId(Long id) {
+        return especieRepository.findById(id).orElseThrow(() -> new 
+        EntityNotFoundException("Espécie não encontrada com ID: " + id));
+
     }
 
     

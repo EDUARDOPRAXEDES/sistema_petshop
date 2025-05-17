@@ -22,16 +22,22 @@
         <thead>
             <tr>
                 <th>Nome</th>
-                <th>Raça</th>
                 <th>Idade</th>
-                
+                <th>Raça</th>
+                <th>Espécie</th>
+                <th>Dono</th>
             </tr>
         </thead>
         <tbody>
             <tr th:each="animal : ${animais}">
                 <td th:text="${animal.nome}"></td>
-                <td th:text="${animal.raca != null ? animal.raca.nome: '---'}"></td>
                 <td th:text="${animal.idade}"></td>
+                <td th:text="${animal.raca.nome}"></td>
+                <td th:text="${animal.raca.especie.nome}"></td>
+                <td th:text="${animal.cliente.nome}"></td>
+                               
+
+
                 <td class="text-center">
                     <div class="d-inline-flex">
                         <a th:href="@{'/animais/editar/' + ${animal.id}}" class="btn btn-warning btn-sm me-2">Editar</a>

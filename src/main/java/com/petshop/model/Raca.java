@@ -1,4 +1,5 @@
 package com.petshop.model;
+
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -11,20 +12,31 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="raca")
+@Table(name = "raca")
 public class Raca {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nome;
 
     @ManyToOne
-    @JoinColumn(name = "especies_id")
-    private Especie especie; 
+    @JoinColumn(name = "especie_id")
+    private Especie especie;
 
     @OneToMany(mappedBy = "raca")
     private List<Animal> animais;
+
+    public Raca() {
+    }
+
+    public Raca(Long id, String nome, Especie especie, List<Animal> animais) {
+        this.id = id;
+        this.nome = nome;
+        this.especie = especie;
+        this.animais = animais;
+    }
 
     public Long getId() {
         return id;
@@ -57,5 +69,9 @@ public class Raca {
     public void setAnimais(List<Animal> animais) {
         this.animais = animais;
     }
-}
 
+    @Override
+    public String toString() {
+        return "Raca [id=" + id + ", nome=" + nome + ", especie=" + especie + ", animais=" + animais + "]";
+    }
+}

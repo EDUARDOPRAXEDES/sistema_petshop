@@ -53,12 +53,20 @@
           
         
           <div class="mb-3">
-            <label for="nome" class="form-label">Nome do Animal</label>
+            <label for="nome" class="form-label"></label>
             <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome do animal" required>
           </div>
           <div class="mb-3">
-            <label for="idade" class="form-label">Idade</label>
+            <label for="idade" class="form-label"></label>
             <input type="number" class="form-control" id="idade" name="idade" placeholder="Idade do animal" required>
+          </div>
+          <div class="mb-3">
+            <select class="form-select" id="especieId" name="especieId" required>
+              <option value="">Selecione uma Espécie</option>
+              <th:block th:each="especie: ${especie}">
+                  <option th:value="${especie.id}" th:text="${especie.nome}"></option>
+              </th:block>
+          </select>
           </div>
           <div class="mb-3">
             <select class="form-select" id="racaId" name="racaId" required>

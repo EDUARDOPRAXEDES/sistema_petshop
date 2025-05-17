@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import com.petshop.model.Especie;
 import com.petshop.services.EspecieService;
 
@@ -38,14 +37,14 @@ public class EspecieController {
 
     @GetMapping("/especie/editar/{id}")
     public String editarEspecie(@PathVariable Long id, Model model) {
-        Especie especie = especieService.buscarPorId(id).orElseThrow(() -> new IllegalArgumentException("ID inválido: " + id));
+        Especie especie = especieService.buscarPorId(id);
         model.addAttribute("especie", especie);
         return "especie/editar";
     }
 
     @PostMapping("/especie/editar/{id}")
     public String atualizarEspecie(@PathVariable Long id, @ModelAttribute Especie especieAtualizada) {
-        Especie especie = especieService.buscarPorId(id).orElseThrow(() -> new IllegalArgumentException("ID inválido: " + id));
+        Especie especie = especieService.buscarPorId(id);
         especie.setId(id);
         especieAtualizada.getId();
         especie.setNome(null);
